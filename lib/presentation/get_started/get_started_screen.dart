@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
+import 'package:shop_me/presentation/sign_up/sign_up_screen.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -65,7 +66,12 @@ class GetStartedScreen extends StatelessWidget {
                   height: 80,
                   decoration: BoxDecoration(color: const Color(0xFF9775FA)),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpScreen()),
+                      );
+                    },
                     child: Text(
                       "Create an Account",
                       style: TextStyle(color: Colors.white, fontSize: 18),
