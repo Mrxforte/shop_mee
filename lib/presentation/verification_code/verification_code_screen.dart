@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_me/presentation/verification_code/verification_code_screen.dart';
+import 'package:shop_me/presentation/password_recovery/password_recovery.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class VerificationCodeScreen extends StatelessWidget {
+  const VerificationCodeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "Forgot Password",
+                  "Verification Code",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
@@ -49,17 +49,34 @@ class ForgotPasswordScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 60),
-                  Text(
-                    "Email Address",
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
-                  Form(
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        hintText: "Email Address",
-                        border: UnderlineInputBorder(),
-                      ),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(4, (index) {
+                      return Container(
+                        width: 60,
+                        height: 60,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            counterText: "",
+                            hintText: "0",
+                            border: InputBorder.none,
+                          ),
+                          onChanged: (value) {
+                            if (value.length == 1 && index < 3) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                        ),
+                      );
+                    }),
                   ),
                 ],
               ),
@@ -72,13 +89,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Please write your email to receive\n a confirmation code to set a new password.",
-                      style: TextStyle(color: Colors.grey),
+                      "00:20 resend confirmation code",
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 // create an account
                 Container(
                   width: double.infinity,
@@ -88,12 +105,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const VerificationCodeScreen(),
+                          builder: (context) => const PasswordRecoveryScreen(),
                         ),
                       );
                     },
                     child: Text(
-                      "Confirm Email",
+                      "Confirm Code",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),

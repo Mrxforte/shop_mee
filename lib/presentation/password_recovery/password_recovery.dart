@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_me/presentation/verification_code/verification_code_screen.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class PasswordRecoveryScreen extends StatelessWidget {
+  const PasswordRecoveryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "Forgot Password",
+                  "New Password",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
@@ -38,30 +38,31 @@ class ForgotPasswordScreen extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/images/backup.png',
-                      width: 255,
-                      fit: BoxFit.cover,
+              child: Form(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Password",
+                      style: TextStyle(fontSize: 16, color: Colors.grey),
                     ),
-                  ),
-                  SizedBox(height: 60),
-                  Text(
-                    "Email Address",
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
-                  Form(
-                    child: TextFormField(
+                    TextFormField(
                       decoration: InputDecoration(
-                        hintText: "Email Address",
                         border: UnderlineInputBorder(),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 20),
+                    Text(
+                      "Confirm Password",
+                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             // terms and conditions with grey text
@@ -72,8 +73,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Please write your email to receive\n a confirmation code to set a new password.",
-                      style: TextStyle(color: Colors.grey),
+                      "Please write your new password.",
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -93,7 +94,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      "Confirm Email",
+                      "Confirm Password",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),
