@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_me/presentation/login/login_screen.dart';
+import 'package:shop_me/presentation/forgot_password/forgot_password_screen.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,13 @@ class SignUpScreen extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "Sign Up",
+                  "Welcome",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
+                ),
+                Text(
+                  "Please enter your details to login to your account",
+                  style: TextStyle(color: Colors.grey),
                 ),
               ],
             ),
@@ -77,6 +81,26 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20),
+                    // forgot button with read text
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ForgotPasswordScreen(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "Forgot Password?",
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -99,19 +123,26 @@ class SignUpScreen extends StatelessWidget {
             // terms and conditions with grey text
             Column(
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "By connecting your account confirm that you agree\n with our Term and Condition",
+                      style: TextStyle(color: Colors.grey),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                // create an account
                 Container(
                   width: double.infinity,
                   height: 80,
                   decoration: BoxDecoration(color: const Color(0xFF9775FA)),
                   child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    },
+                    onPressed: () {},
                     child: Text(
-                      "Sign Up",
+                      "Login",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),
